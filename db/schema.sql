@@ -1,2 +1,4 @@
+
 DROP DATABASE IF EXISTS aerial_db;
 CREATE DATABASE aerial_db;
+
