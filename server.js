@@ -1,20 +1,54 @@
-const express = require('express')
-const app = express()
-const { v4: uuidV4 } = require('uuid')
+
+// Dependencies
+const path = require('path');
+const express = require('express');
+const session = require('express-session');
 const exphbs = require('express-handlebars');
-const PORT = 3001
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const routes = require('./controllers');
 
-const hbs = exphbs.create();
+const sequelize = require('./config/connection');
+const helpers = require('./utils/helpers');
 
-app.engine('handlebars', hbs.engine)
-app.set('view engine', 'handlebars')
-app.use(express.static('public'))
+const hbs = exphbs.create({ helpers });
+
+// Sets up the Express App
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 
-app.get('/', (req, res) => {
+const sess = {
+  secret: 'secret',
+  cookie: {
+    maxAge: 24 * 60 * 60 *1000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  // Sets up session store
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+}
 
-  res.render('')
+app.use(session(sess));
+// Set Handlebars as the default template engine.
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => console.log('Now listening'));
+app.use(routes);
+
+
+// Starts the server to begin listening
+sequelize.sync({ force: false }).then (() => {
+  app.listen(PORT, () => {
+    console.log('Server listening on: http://localhost:' + PORT);
+  });  
+});
+

@@ -1,9 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <!-- add Join Meeting Button -->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerial Conferencing</title>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to Aerial Conferencing</h1>
+  </header>
+  <nav>
+    <a href="/">Home</a>
+    {{#if loggedIn}}
+    <button id="logout" style="background: none; border: none; padding: 0;">Logout</button>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+  </nav>
+  <main>
+    <aside>
+      <h2></h2>
+    </aside>
+    <div class="">
+      {{{body}}}
+    </div>
+  </main>
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+    
+    
+     <!-- add Join Meeting Button -->
     <button>Join Meeting</button>
 
     <!-- for Managing meeting status -->
@@ -14,5 +44,4 @@
 
     <script src="/js/index.js"></script>
     <script src="https://sdk.videosdk.live/js-sdk/0.0.78/videosdk.js"></script>
-  </body>
-</html>
+</body>
