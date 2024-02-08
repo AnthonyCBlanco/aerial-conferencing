@@ -14,6 +14,7 @@
   </header>
   <nav>
     <a href="/">Home</a>
+    <a href="/room">Join A room</a>
     {{#if loggedIn}}
     <button id="logout" style="background: none; border: none; padding: 0;">Logout</button>
     {{else}}
@@ -33,15 +34,4 @@
     {{/if}}
     
     
-     <!-- add Join Meeting Button -->
-    <button>Join Meeting</button>
-
-    <!-- for Managing meeting status -->
-    <div id="textDiv"></div>
-
-    <!-- render Video -->
-    <div class="row" id="videoContainer"></div>
-
-    <script src="/js/index.js"></script>
-    <script src="https://sdk.videosdk.live/js-sdk/0.0.78/videosdk.js"></script>
 </body>
