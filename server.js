@@ -1,3 +1,4 @@
+
 // Dependencies
 const path = require('path');
 const express = require('express');
@@ -50,3 +51,4 @@ sequelize.sync({ force: false }).then (() => {
     console.log('Server listening on: http://localhost:' + PORT);
   });  
 });
+
