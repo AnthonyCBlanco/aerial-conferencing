@@ -53,9 +53,38 @@ const initializeMeeting = () => {
   // })
 }
 
-function createLocalParticipant() {}
-function createVideoElement() {}
-function createAudioElement() {}
+const createLocalParticipant = () => {
+  
+}
+
+const createVideoElement = (pId, name) => {
+  let videoFrameEl = document.createElement('div')
+  videoFrameEl.setAttribute('id', `f-${pId}`)
+
+  let videoElement = document.createElement('video')
+  videoElement.classList.add("video-frame");
+  videoElement.setAttribute("id", `v-${pId}`);
+  videoElement.setAttribute("playsinline", true);
+  videoElement.setAttribute("width", "300");
+  videoFrameEl.appendChild(videoElement);
+
+  let displayNameEl = document.createElement('div')
+  displayNameEl.innerHTML= `Name: ${name}`
+
+  videoFrameEl.appendChild(displayNameEl)
+  return videoFrameEl
+}
+
+const createAudioElement = (pId) => {
+  let audioElement = document.createElement("audio");
+  audioElement.setAttribute("autoPlay", "false");
+  audioElement.setAttribute("playsInline", "true");
+  audioElement.setAttribute("controls", "false");
+  audioElement.setAttribute("id", `a-${pId}`);
+  audioElement.style.display = "none";
+  return audioElement;
+}
+
 function setTrack() {}
 
 const joinMeeting = async () => {
