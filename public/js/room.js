@@ -137,6 +137,10 @@ const joinMeeting = async () => {
   roomId = document.getElementById("meetingIdTxt").value;
   meetingId = roomId;
 
+  if(meetingId == 'johns-apples'){
+    fetch
+  }
+
   initializeMeeting();
 };
 
