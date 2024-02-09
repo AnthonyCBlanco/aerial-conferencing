@@ -33,7 +33,7 @@ const initializeMeeting = () => {
   })
 
   meeting.on("meeting-joined", () => {
-    textDiv.style.display = "none";
+    textDivEl.style.display = "none";
     document.getElementById("grid-screen").style.display = "block";
     document.getElementById(
       "meetingIdHeading"
@@ -44,30 +44,101 @@ const initializeMeeting = () => {
     videoContainerEl.innerHTML= ""
   });
 
-  // meeting.on('participant-join', (participant) => {
+  meeting.on("participant-joined", (participant) => {
+    let videoElement = createVideoElement(
+      participant.id,
+      participant.displayName
+    );
+    let audioElement = createAudioElement(participant.id);
+    // stream-enabled
+    participant.on("stream-enabled", (stream) => {
+      setTrack(stream, audioElement, participant, false);
+    });
+    videoContainerEl.appendChild(videoElement);
+    videoContainerEl.appendChild(audioElement);
+  });
 
-  // })
+  meeting.on('participant-left', (participant) => {
+    let vElement = document.getElementById(`f-${participant.id}`);
+    vElement.remove(vElement);
 
-  // meeting.on('participant-left', (participant) => {
-    
-  // })
-}
-
-function createLocalParticipant() {}
-function createVideoElement() {}
-function createAudioElement() {}
-function setTrack() {}
-
-const joinMeeting = async () => {
-  document.querySelector('#join-screen', async () => {
-    textDivEl.textContent = 'Joining Meeting'
-
-    roomId = document.getElementById('meetingIdtxt').value
-    meetingId = roomId
-
-    initializeMeeting()
+    let aElement = document.getElementById(`a-${participant.id}`);
+    aElement.remove(aElement);
   })
 }
+
+const createLocalParticipant = () => {
+  let localParticipant = createVideoElement(
+    meeting.localParticipant.id,
+    meeting.localParticipant.displayName
+  );
+  videoContainerEl.appendChild(localParticipant);
+}
+
+const createVideoElement = (pId, name) => {
+  let videoFrameEl = document.createElement('div')
+  videoFrameEl.setAttribute('id', `f-${pId}`)
+
+  let videoElement = document.createElement('video')
+  videoElement.classList.add("video-frame");
+  videoElement.setAttribute("id", `v-${pId}`);
+  videoElement.setAttribute("playsinline", true);
+  videoElement.setAttribute("width", "300");
+  videoFrameEl.appendChild(videoElement);
+
+  let displayNameEl = document.createElement('div')
+  displayNameEl.innerHTML= `Name: ${name}`
+
+  videoFrameEl.appendChild(displayNameEl)
+  return videoFrameEl
+}
+
+const createAudioElement = (pId) => {
+  let audioElement = document.createElement("audio");
+  audioElement.setAttribute("autoPlay", "false");
+  audioElement.setAttribute("playsInline", "true");
+  audioElement.setAttribute("controls", "false");
+  audioElement.setAttribute("id", `a-${pId}`);
+  audioElement.style.display = "none";
+  return audioElement;
+}
+
+const setTrack = (stream, audioElement, participant, isLocal) => {
+  if (stream.kind == "video") {
+    isWebCamOn = true;
+    const mediaStream = new MediaStream();
+    mediaStream.addTrack(stream.track);
+    let videoElm = document.getElementById(`v-${participant.id}`);
+    videoElm.srcObject = mediaStream;
+    videoElm
+      .play()
+      .catch((error) =>
+        console.error("videoElem.current.play() failed", error)
+      );
+  }
+  if (stream.kind == "audio") {
+    if (isLocal) {
+      isMicOn = true;
+    } else {
+      const mediaStream = new MediaStream();
+      mediaStream.addTrack(stream.track);
+      audioElement.srcObject = mediaStream;
+      audioElement
+        .play()
+        .catch((error) => console.error("audioElem.play() failed", error));
+    }
+  }
+}
+
+const joinMeeting = async () => {
+  document.getElementById("join-screen").style.display = "none";
+  textDivEl.textContent = "Joining the meeting...";
+
+  roomId = document.getElementById("meetingIdTxt").value;
+  meetingId = roomId;
+
+  initializeMeeting();
+};
 
 const createMeeting = async () => {
   document.querySelector('#join-screen').setAttribute("style", "display: none")
@@ -86,5 +157,42 @@ const createMeeting = async () => {
   initializeMeeting()
 }
 
+const leaveMeeting = async () => {
+  meeting?.leave();
+  document.getElementById("grid-screen").style.display = "none";
+  document.getElementById("join-screen").style.display = "block";
+}
+
+const toggleMic = async () => {
+  if (isMicOn) {
+    // Disable Mic in Meeting
+    meeting?.muteMic();
+  } else {
+    // Enable Mic in Meeting
+    meeting?.unmuteMic();
+  }
+  isMicOn = !isMicOn;
+}
+
+const toggleCam = async () => {
+  if (isWebCamOn) {
+    // Disable Webcam in Meeting
+    meeting?.disableWebcam();
+
+    let vElement = document.getElementById(`f-${meeting.localParticipant.id}`);
+    vElement.style.display = "none";
+  } else {
+    // Enable Webcam in Meeting
+    meeting?.enableWebcam();
+
+    let vElement = document.getElementById(`f-${meeting.localParticipant.id}`);
+    vElement.style.display = "inline";
+  }
+  isWebCamOn = !isWebCamOn;
+}
+
+toggleWebCamBtnEl.addEventListener('click', toggleCam)
+toggleMicBtnEl.addEventListener('click', toggleMic)
+leaveBtnEl.addEventListener('click', leaveMeeting)
 joinBtnEl.addEventListener('click', joinMeeting)
 createBtnEl.addEventListener('click', createMeeting)
