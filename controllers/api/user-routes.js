@@ -84,4 +84,37 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.get('/test-session', (req, res) => {
+  console.log('Session ID:', req.sessionID);
+  console.log('User ID from session:', req.session.userId);
+  res.send('Check the console for session information.');
+});
+
+// Get friends for the logged-in user
+router.get('/friends', async (req, res) => {
+  try {
+    // Check if the user is logged in
+    if (!req.session.userId) {
+      return res.status(401).json({ error: 'Unauthorized - User not logged in' });
+    }
+
+    // Get the current logged-in user's ID from the session
+    const userId = req.session.userId;
+
+    // Fetch the user and their associated friends
+    const userData = await User.findByPk(userId, {
+      include: [{ model: Friend }],
+    });
+
+    // Extract the friend data from the user object
+    const friends = userData ? userData.friends : [];
+
+    // Send the friend data as a JSON response
+    res.status(200).json({ friends });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;

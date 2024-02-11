@@ -39,10 +39,16 @@
       <aside>
         <h2>Friends</h2>
         <div>
-          <ol>
-            <li></li>
-            <li></li>
-            <li></li>
+          <ol id="friend-list">
+            {{#each friends}}
+              <li>{{username}}'s Friends:
+                <ul>
+                  {{#each friends}}
+                    <li>{{username}}</li>
+                  {{/each}}
+                </ul>
+              </li>
+            {{/each}}
           </ol>
           <form class="form friend-form">
             <div class="form-group">
@@ -62,6 +68,7 @@
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   <script src="/js/friend/addfriend.js"></script>
+  <script src="/js/friend/friendlist-render.js"></script>
   {{/if}}
 </body>
 </html>
