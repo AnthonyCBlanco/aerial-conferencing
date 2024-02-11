@@ -17,7 +17,7 @@
       </label>
         <ul class="menu">
           
-          <li><a href="/login"</a></a></li>
+          <li><a href="/login"></a></li>
         </ul>
       </section>
     <!-- add Join Meeting Button -->

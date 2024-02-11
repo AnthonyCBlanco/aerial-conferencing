@@ -14,7 +14,7 @@ const hbs = exphbs.create({ helpers });
 
 // Sets up the Express App
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 
 const sess = {

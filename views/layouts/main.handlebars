@@ -34,9 +34,34 @@
     <div class="">
       {{{body}}}
     </div>
+    {{#if loggedIn}}
+    <div>
+      <aside>
+        <h2>Friends</h2>
+        <div>
+          <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+          <form class="form friend-form">
+            <div class="form-group">
+              <label for="username-input">Username:</label>
+              <input class="form-input" type="text" id="username-input" />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit">add friend</button>
+            </div>
+          </form>
+        </div>
+      </aside>
+    </div>
+    {{/if}}
   </main>
+  
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
+  <script src="/js/friend/addfriend.js"></script>
   {{/if}}
 </body>
 </html>

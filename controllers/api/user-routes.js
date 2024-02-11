@@ -1,5 +1,18 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Friend } = require('../../models');
+
+// Get all user
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      include: [{ model: Friend}],
+    });
+    res.status(200).json(userData);
+  }catch (err){
+    res.status(404).json(err);
+  }
+});
+
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -9,9 +22,8 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
-
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.loggedIn = false;
 
       res.status(200).json(dbUserData);
     });
@@ -45,6 +57,8 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
+
+    req.session.userId = dbUserData.id;
 
     req.session.save(() => {
       req.session.loggedIn = true;
