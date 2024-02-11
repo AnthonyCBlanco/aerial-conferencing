@@ -56,7 +56,8 @@
               <input class="form-input" type="text" id="username-input" />
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">add friend</button>
+              <button class="btn btn-primary add-friend" type="submit">Add friend</button>
+              <button class="btn btn-primary remove-friend" type="submit">Remove friend</button>
             </div>
           </form>
         </div>
@@ -67,7 +68,7 @@
   
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
-  <script src="/js/friend/addfriend.js"></script>
+  <script src="/js/friend/add-remove-friend.js"></script>
   <script src="/js/friend/friendlist-render.js"></script>
   {{/if}}
 </body>
