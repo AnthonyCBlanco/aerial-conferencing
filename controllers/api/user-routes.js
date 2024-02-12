@@ -1,6 +1,81 @@
 const router = require('express').Router();
 const { User, Friend } = require('../../models');
 
+// Function to update meeting_id for both User and associated Friends
+const updateMeetingIdForUserAndFriends = async (userId, meetingId) => {
+  try {
+    
+    // Update meeting_id for User
+    const updatedUser = await User.update({ meeting_id: meetingId }, {
+      where: {
+        id: userId,
+      },
+    });
+
+    // Find the current user and get the username attribute
+    const currentUser = await User.findOne({
+      attributes: ['username'],
+      where: {
+        id: userId,
+      },
+    });
+    const currentUsername = currentUser ? currentUser.username : null;
+    console.log('username: ' + currentUsername);
+
+    // Update meeting_id for Friends associated with the User
+    const updatedFriends = await Friend.update({ meeting_id: meetingId }, {
+      where: {
+        username: currentUsername,
+      },
+    });
+
+    return { updatedUser, updatedFriends };
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+
+
+router.post('/add-meeting-id', async (req, res) => {
+  try {
+    const meetingId = req.body.meetingId;
+    const currentUser = req.session.userId;
+    // const currentUsername = req.session.username;
+    // console.log('current user name' + currentUsername);
+    console.log(meetingId);
+    console.log(currentUser);
+  
+    if (!currentUser) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    // Check if the user is in the friend list
+    const existingUser = await User.findOne({
+      where: {
+        id: currentUser,
+      },
+    });
+
+    if (!existingUser) {
+      return res.status(400).json({ message: 'User not found in your friend list' });
+    }
+
+    // Update the friend's meeting_id with the provided meetingId
+    await existingUser.update({ meeting_id: meetingId });
+    await updateMeetingIdForUserAndFriends(currentUser, meetingId);
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json({ message: 'Meeting ID added successfully' });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 // Get all user
 router.get('/', async (req, res) => {
   try {

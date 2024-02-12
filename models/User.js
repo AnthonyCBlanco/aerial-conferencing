@@ -36,7 +36,10 @@ User.init(
         len: [8],
       },
     },
-    
+    meeting_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     hooks: {

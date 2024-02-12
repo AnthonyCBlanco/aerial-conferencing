@@ -22,6 +22,10 @@ Friend.init(
         key: 'id'
       },
     },
+    meeting_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,

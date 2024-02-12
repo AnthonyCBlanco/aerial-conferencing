@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { User, Friend } = require('../../models');
 
-
-
 router.post('/', async (req, res) => {
   try {
     const username = req.body.username;
@@ -12,7 +10,6 @@ router.post('/', async (req, res) => {
       return res.status(401).json({ message: 'User not authenticated' });
     }
 
-    // Print the user ID
     console.log(`Logged-in User ID: ${currentUser}`);
 
     // Retrieve the current user's username from the database
@@ -42,7 +39,6 @@ router.post('/', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     
-    // Use req.session.userId to get the current logged-in user's ID
     const dbFriendData = await Friend.create({
       username,
       user_id: currentUser,

@@ -14,14 +14,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   function renderFriendList(friends) {
     const friendListElement = document.getElementById('friend-list');
-  
-    friendListElement.innerHTML = '';
-  
-    friends.forEach((friend) => {
-      const listItem = document.createElement('li');
-      listItem.textContent = friend.username;
-  
-      friendListElement.appendChild(listItem);
-    });
+
+  friendListElement.innerHTML = '';
+
+  friends.forEach((friend) => {
+    const listItem = document.createElement('li');
+
+    let content = `${friend.username}`;
+    console.log(friend.meetingId);
+    console.log(friend.meeting_id);
+
+    if (friend.meeting_id !== 'null') {
+      content += ` Meeting ID: ${friend.meeting_id}`;
+    }
+
+    listItem.textContent = content;
+
+    friendListElement.appendChild(listItem);
+  });
   }
   
