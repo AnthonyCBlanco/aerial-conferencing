@@ -26,11 +26,8 @@ router.get('/signup', async (req,res) => {
 })
 
 router.get('/room', async (req, res) => {
-    // if (!req.session.loggedIn)  {
-    //     res.redirect('/login')
-    // } else{
-        res.render('room')
-// }
+    res.render('room', { loggedIn: req.session.loggedIn })
+
 })
 
 module.exports = router;

@@ -35,34 +35,7 @@
       {{{body}}}
     </div>
     {{#if loggedIn}}
-    <div>
-      <aside>
-        <h2>Friends</h2>
-        <div>
-          <ol id="friend-list">
-            {{#each friends}}
-              <li>{{username}}'s Friends:
-                <ul>
-                  {{#each friends}}
-                    <li>{{username}}</li>
-                  {{/each}}
-                </ul>
-              </li>
-            {{/each}}
-          </ol>
-          <form class="form friend-form">
-            <div class="form-group">
-              <label for="username-input">Username:</label>
-              <input class="form-input" type="text" id="username-input" />
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary add-friend" type="submit">Add friend</button>
-              <button class="btn btn-primary remove-friend" type="submit">Remove friend</button>
-            </div>
-          </form>
-        </div>
-      </aside>
-    </div>
+    {{> friend}}
     {{/if}}
   </main>
   
