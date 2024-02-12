@@ -34,9 +34,15 @@
     <div class="">
       {{{body}}}
     </div>
+    {{#if loggedIn}}
+    {{> friend}}
+    {{/if}}
   </main>
+  
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
+  <script src="/js/friend/add-remove-friend.js"></script>
+  <script src="/js/friend/friendlist-render.js"></script>
   {{/if}}
 </body>
 </html>
