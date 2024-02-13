@@ -1,5 +1,7 @@
+/* Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&family=Rubik+Mono+One&display=swap');
 
+/* Root Variables */
 :root {
     --primary-color: #69385C;
     --secondary-color: #715B64;
@@ -8,75 +10,131 @@
     --text-color: #D3BDB0;
 }
 
+/* Join Screen Styles */
+#join-screen button,
+#join-screen input {
+    background-color: var(--background-color);
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#join-screen button:hover,
+#join-screen input:hover {
+    background-color: var(--background-color);
+}
+
+/* Grid Screen Styles */
+#grid-screen button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#grid-screen button:hover {
+    background-color: var(--background-color);
+}
+
+/* Primary Button Styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--background-color);
+}
+
+/* Body Styles */
 body {
-  font-family: 'Rubik Mono One', monospace;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+    font-family: "Rubik Mono One", monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
+/* Header Styles */
 header {
-  background-color: var(--accent-color);
-  color: #fff;
-  padding: 1em;
-  text-align: center;
+    font-family: 'Rubik Mono One', monospace;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 1em;
+    text-align: center;
 }
 
+/* Navigation Styles */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--accent-color);
-  color: #fff;
-  padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 1em;
 }
 
 nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-right: 20px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
+/* Main Styles */
 main {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
 }
 
+/* Aside Styles */
 aside {
-  width: 20%; /* Adjust the width as needed */
-  background-color: var(--accent-color);
-  padding: 20px;
-  border-radius: 8px;
+    width: 20%;
+    background-color: var(--accent-color);
+    padding: 20px;
+    border-radius: 8px;
 }
 
+/* Main Div Styles */
 main div {
-  width: 75%; /* Adjust the width as needed */
-  background-color: white;
-  padding: 20px;
-  border: 1px solid var(--secondary-color);
-  border-radius: 8px;
+    width: 75%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
 }
 
+/* Footer Styles */
 footer {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 10px;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
