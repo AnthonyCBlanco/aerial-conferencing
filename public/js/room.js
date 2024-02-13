@@ -164,8 +164,7 @@ const joinMeeting = async () => {
 
   // Perform additional actions based on meeting ID
   if (meetingId == 'johns-apples') {
-    // Perform specific actions for a certain meeting ID
-    // (Note: Code for this scenario is missing)
+    window.location.replace('/johnathan')
   }
 
   // Initialize and join the meeting
