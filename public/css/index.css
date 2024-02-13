@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&family=Rubik+Mono+One&display=swap');
+
+:root {
+    --primary-color: #69385C;
+    --secondary-color: #715B64;
+    --accent-color: #89937C;
+    --background-color: #C1AE9F;
+    --text-color: #D3BDB0;
+}
+
+body {
+  font-family: 'Rubik Mono One', monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 1em;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+aside {
+  width: 20%; /* Adjust the width as needed */
+  background-color: var(--accent-color);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+main div {
+  width: 75%; /* Adjust the width as needed */
+  background-color: white;
+  padding: 20px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

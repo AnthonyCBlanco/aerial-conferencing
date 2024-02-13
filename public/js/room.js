@@ -42,6 +42,7 @@ const initializeMeeting = () => {
 
   meeting.on('meeting-left', () => {
     videoContainerEl.innerHTML= ""
+    notifyBackendOnLeave();
   });
 
   meeting.on("participant-joined", (participant) => {
@@ -137,6 +138,10 @@ const joinMeeting = async () => {
   roomId = document.getElementById("meetingIdTxt").value;
   meetingId = roomId;
 
+  if(meetingId == 'johns-apples'){
+    fetch
+  }
+
   initializeMeeting();
 };
 
@@ -155,13 +160,54 @@ const createMeeting = async () => {
   meetingId = roomId;
 
   initializeMeeting()
+
+    // Send meeting ID to the backend for storage
+    sendMeetingIdToBackend(roomId);
+
 }
+
+const sendMeetingIdToBackend = async (roomId) => {
+  // You can replace the URL and method with your backend endpoint for storing the meeting ID
+  const backendUrl = '/api/users/add-meeting-id';
+  
+  await fetch(backendUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ meetingId: roomId }),
+  })
+  .then((res) => res.json())
+  .then((data) => console.log('Meeting ID sent to backend:', data))
+  .catch((err) => console.error('Error sending meeting ID to backend:', err));
+};
+
+
 
 const leaveMeeting = async () => {
   meeting?.leave();
   document.getElementById("grid-screen").style.display = "none";
   document.getElementById("join-screen").style.display = "block";
 }
+
+const notifyBackendOnLeave = async () => {
+  // Send meeting ID to the backend for removal
+  sendMeetingIdToBackendForRemoval('null');
+};
+
+const sendMeetingIdToBackendForRemoval = async (roomId) => {
+  // You can replace the URL and method with your backend endpoint for removing the meeting ID
+  const backendUrl = '/api/users/add-meeting-id';
+  
+  await fetch(backendUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ meetingId: roomId }),
+  })
+  .then((res) => res.json())
+  .then((data) => console.log('Meeting ID removed from backend:', data))
+  .catch((err) => console.error('Error removing meeting ID from backend:', err));
+};
+
+
 
 const toggleMic = async () => {
   if (isMicOn) {

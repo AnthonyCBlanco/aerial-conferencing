@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aerial Conferencing</title>
+  <title>Aerial - Social Network App</title>
+  <link rel="reset" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
   <header>
-    <h1>Welcome to Aerial Conferencing</h1>
+    <h1>Aerial Conferencing</h1>
   </header>
   <nav>
     <a href="/">Home</a>
     <a href="/room">Join A room</a>
+    <ul> <!-- Add a wrapping <ul> -->
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#feed">Feed</a></li>
+      <li><a href="#messages">Messages</a></li>
+    </ul>
     {{#if loggedIn}}
     <button id="logout" style="background: none; border: none; padding: 0;">Logout</button>
     {{else}}
@@ -28,10 +34,15 @@
     <div class="">
       {{{body}}}
     </div>
-  </main>
     {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
+    {{> friend}}
     {{/if}}
-    
-    
+  </main>
+  
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  <script src="/js/friend/add-remove-friend.js"></script>
+  <script src="/js/friend/friendlist-render.js"></script>
+  {{/if}}
 </body>
+</html>
