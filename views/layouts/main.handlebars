@@ -41,6 +41,27 @@
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}
+
+  </nav>
+  <main>
+    <aside>
+      <h2></h2>
+    </aside>
+    <div class="">
+      {{{body}}}
+    </div>
+    {{#if loggedIn}}
+    {{> friend}}
+    {{/if}}
+  </main>
+  
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  <script src="/js/friend_list/add-remove-friend.js"></script>
+  <script src="/js/friend_list/friendlist-render.js"></script>
+  {{/if}}
+
 </body>
 
 </html>
+
