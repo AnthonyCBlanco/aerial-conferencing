@@ -40,20 +40,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    friend_id: {
-      type: DataTypes.UUID,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
-    },
-    pending_friend_id: {
-      type: DataTypes.UUID,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
-    }
   },
   {
     hooks: {

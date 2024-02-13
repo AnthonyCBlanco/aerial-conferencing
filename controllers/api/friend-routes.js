@@ -1,11 +1,9 @@
 const router = require('express').Router();
 const { User, Friend } = require('../../models');
 
-
-// Add Contact Route
 router.post('/', async (req, res) => {
   try {
-    const friend_username = req.body.username;
+    const username = req.body.username;
     const currentUser = req.session.userId;
     // Check if userId is set
     if (!currentUser) {
@@ -19,14 +17,14 @@ router.post('/', async (req, res) => {
     const currentUsername = currentUserData ? currentUserData.username : null;
 
     // Check if the current user is adding themselves
-    if (currentUsername === friend_username) {
+    if (currentUsername === username) {
       return res.status(400).json({ message: 'Cannot add yourself as a friend' });
     }
 
     // Check if the friend is already in the friend list
     const existingFriend = await Friend.findOne({
       where: {
-        friend_username,
+        username,
         user_id: currentUser,
       },
     });
@@ -35,8 +33,8 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Friend is already in your friend list' });
     }
 
-    const user = await User.findOne({ where: { username } });
 
+    const user = await User.findOne({ where: { username } });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
