@@ -25,6 +25,17 @@ router.get('/signup', async (req,res) => {
     
 })
 
+router.get('/forgetpassword', async (req, res) => {
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    //   } else {}
+        res.render('forgetpassword');
+
+    
+});
+
+
 router.get('/room', async (req, res) => {
     res.render('room', { loggedIn: req.session.loggedIn })
 
