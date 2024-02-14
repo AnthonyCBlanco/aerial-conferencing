@@ -41,4 +41,8 @@ router.get('/room', async (req, res) => {
 
 })
 
+router.get('/johnathan', async (req, res) => {
+    res.render('secret')
+})
+
 module.exports = router;
