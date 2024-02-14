@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const { User, ResetToken } = require('../../models');
 require('dotenv').config();
-const { emailHandler } = require('../../utils/resetPassword')
+const { emailHandler } = require('../../utils/nodemailconfig')
 const { generateRandomCode } = require('../../utils/randomcode')
 
 router.post('/', async (req, res) => {
    const email = req.body.email
-   if(!email) res.status(400).json("Please Enter A Email")
+   if(!email) return
 
    const userData = await User.findOne({where: {email: email}, attributes: {exclude: ['password']}})
 
-   if(!userData) res.status(404).json('can not find user with that email')
+   if(!userData) return
 
    const token = generateRandomCode(8)
    

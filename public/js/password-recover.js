@@ -1,20 +1,24 @@
+const emailformEl = document.querySelector('#email-form')
+const resetformEl =  document.querySelector('#reset-form')
+const newpassformEl = document.querySelector('#newpass-form')
 
-function submitForgetPasswordForm() {
-const email = document.getElementById('email-login').value;
+const submitBtn = document.querySelector('#email-submit')
 
-fetch('api/users/forgetpassword', {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email }),
-})
-.then(response => response.json())
-.then(data => {
-    console.log(data);
-})
-.catch(error => {
-    console.error('Error:', error);
-});
+async function submitForgetPasswordForm() {
+try{
+    const email = document.getElementById('email-login').value
+    fetch('/api/forgetpassword',{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+    })
+    emailformEl.style.display = 'none'               
+    resetformEl.style.display = 'block'
+    
+    
+}catch(err){
+    console.log(err)
+}
 }
 
+submitBtn.addEventListener('click', submitForgetPasswordForm)

@@ -182,5 +182,9 @@ footer {
     width: 100%;
 }
 
+#reset-form, #newpass-form{
+    display: none;
+}
+
 
 
