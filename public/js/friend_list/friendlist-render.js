@@ -24,29 +24,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(friend.meetingId);
     console.log(friend.meeting_id);
 
-    if (friend.meeting_id !== null || friend.meeting_id !== 'null') {
-      
-      content += ` Is in the meeting`;
-      const joinButton = document.createElement('button');
-      joinButton.textContent = 'Join';
-      joinButton.classList.add('btn', 'btn-primary', 'join-meeting-btn');
-      const joinButtonId = `joinButton_${friend.id}`;
-      joinButton.id = joinButtonId;
+    const joinButton = document.createElement('button');
+    joinButton.textContent = 'Join Meeting';
+    joinButton.classList.add('btn', 'btn-primary', 'join-meeting-btn');
+    const joinButtonId = `joinButton_${friend.id}`;
+    joinButton.id = joinButtonId;
 
-      content += ` ${joinButton.outerHTML}`;
-      listItem.innerHTML = content;
-      friendListElement.appendChild(listItem);
-      const joinBtnEl1 = document.getElementById(joinButtonId);
-      joinBtnEl1.addEventListener('click', () => {
-      console.log('Join button click event triggered!');
-      console.log(`Joining meeting with ID: ${friend.meeting_id}`);
-      joinMeetingByFriendList(friend.meeting_id);
-  });
-    } else {
-      content += ' Offline';
-    }
+    content += ` ${joinButton.outerHTML}`;
+    listItem.innerHTML = content;
+    friendListElement.appendChild(listItem);
+    const joinBtnEl1 = document.getElementById(joinButtonId);
+  
+    joinBtnEl1.addEventListener('click', () => {
+    console.log('Join button click event triggered!');
+    console.log(`Joining meeting with ID: ${friend.meeting_id}`);
+     
+      if (window.location.pathname === '/room') {
+        joinMeetingByFriendList(friend.meeting_id);
+      } else {
+        window.location.replace('/room');
+        joinMeetingByFriendList(friend.meeting_id);
+      }
+    });
+  
   });  
-  }
+  };
   
   const joinMeetingByFriendList = async (roomId) => {
     document.getElementById("join-screen").style.display = "none";
