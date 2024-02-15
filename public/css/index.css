@@ -112,7 +112,7 @@ main {
     margin: 20px;
 }
 
-/* Aside Styles */
+/* Aside Styles NOT THERE YET*/
 aside {
     width: 20%;
     background-color: var(--accent-color);
@@ -171,16 +171,136 @@ main div {
     border-radius: 8px;
 }
 
-/* Footer Styles */
-footer {
+#join-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 300px;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    margin: auto;
+    max-width: 300px;
+  }
+  
+  #join-screen button {
     background-color: var(--primary-color);
     color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust based on your preference */
+    transition: background-color 0.3s ease;
+  }
+  
+  #join-screen button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  #join-screen input[type="text"] {
     padding: 10px;
-    text-align: center;
-    position: relative;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    width: calc(100% - 22px); 
+    font-size: 16px;
+  }
+  
+  /* Additional styles for grid-screen and its elements */
+  #grid-screen {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  #grid-screen h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  #grid-screen button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #grid-screen button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Styling for the video container */
+  #videoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-top: 20px;
-    width: 100%;
-}
+  }
+  
+
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap; 
+  }
+  
+  .footer-section {
+    margin: 10px;
+    flex: 1; 
+    min-width: 200px; 
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 15px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: var(--accent-color);
+  }
+  
+  .btn-primary {
+    background-color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--accent-color);
+  }
 
 
 
