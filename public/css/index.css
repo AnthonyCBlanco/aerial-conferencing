@@ -78,6 +78,29 @@ header {
     text-align: center;
 }
 
+#logout {
+    background-color: var(--accent-color); 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    outline: none; /
+  }
+  
+  #logout:hover,
+  #logout:focus {
+    background-color: darken(var(--accent-color), 10%); 
+    color: var(--primary-color); 
+    outline: none; 
+  }
+  
+
 /* Navigation Styles */
 nav {
     display: flex;
@@ -112,7 +135,7 @@ main {
     margin: 20px;
 }
 
-/* Aside Styles NOT THERE YET*/
+/* Aside Styles*/
 aside {
     width: 20%;
     background-color: var(--accent-color);
@@ -142,6 +165,9 @@ main div {
     border-radius: 8px;
 }
 
+.friends-section {
+    background-color:var(--primary-color);
+}
 
 .feature-list {
     display: grid;
@@ -158,6 +184,48 @@ main div {
     line-height: 1.6;
     color: var(--primary-color);
 }
+
+#side-bar {
+    max-width: 350px;
+}
+
+aside   {
+    max-width: 50%;
+}
+
+#friends-container {
+  background-color: var(--background-color); 
+  color: var(--text-color); 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin: 20px auto; 
+  max-width: 800px; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;  
+}
+
+#friends-container h2, #friends-container h3 {
+  color: var(--primary-color); /* Highlighting headings for visibility */
+  margin-bottom: 10px;
+}
+
+#friends-container a {
+  color: var(--accent-color);
+  text-decoration: none; 
+  transition: color 0.3s ease; 
+}
+
+
+#friends-container a:hover {
+  color: darken(var(--accent-color), 10%); 
+}
+
+#friends-container p {
+  line-height: 1.6; 
+}
+
 
 /* Image Styling */
 .feature-image {
@@ -192,7 +260,7 @@ main div {
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
-    font-size: 16px; /* Adjust based on your preference */
+    font-size: 16px; 
     transition: background-color 0.3s ease;
   }
   
@@ -306,5 +374,42 @@ main div {
     display: none;
 }
 
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
 
+    nav ul li,
+    nav a {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    aside,
+    main div {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+
+@media (max-width: 480px) {
+    header,
+    nav,
+    main,
+    footer {
+        padding: 10px;
+    }
+
+}}
 
