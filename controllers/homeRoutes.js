@@ -26,17 +26,26 @@ router.get('/signup', async (req,res) => {
 })
 
 router.get('/forgetpassword', async (req, res) => {
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    //   } else {}
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+      }
         res.render('forgetpassword');
-
-    
 });
 
+// router.get('/profile', async (req, res) => {
+//     if (!req.session.loggedIn) {
+//         res.redirect('/login');
+//         return;
+//     }
+//     res.render('profile', { loggedIn: req.session.loggedIn } )
+//     });
 
 router.get('/room', async (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
     res.render('room', { loggedIn: req.session.loggedIn })
 
 })
