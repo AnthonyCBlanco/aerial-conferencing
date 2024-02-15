@@ -25,7 +25,7 @@
             <li><a href="/profile/">Profile</a></li>
         </ul>
         {{#if loggedIn}}
-        <button id="logout" style="background: none; border: none; padding: 0;">Logout</button>
+        <button id="logout">Logout</button>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
@@ -33,16 +33,17 @@
 
   </nav>
   <main>
-    <aside>
-      <h2></h2>
-    </aside>
-    <div class="">
-      {{{body}}}
-    </div>
-    {{#if loggedIn}}
-    {{> friend}}
-    {{/if}}
-  </main>
+
+
+<div>
+  {{{body}}}
+</div id="friends-container">
+<div id="side-bar">
+{{#if loggedIn}}
+{{> friend}}
+{{/if}}
+</div>
+</main>
   
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
