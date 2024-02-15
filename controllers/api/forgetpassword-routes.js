@@ -54,12 +54,6 @@ router.put('/setpassword', async (req, res) => {
       }else{
          res.status(500).end()
       }
-   // await User.update(   
-   //    { password: newpassword }, 
-   //    { where:  { id: userID } }
-   //    )
-
-   // res.status(200).json("Password Updated")
    }catch(err){
       console.log(err)
    }  
