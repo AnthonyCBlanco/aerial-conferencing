@@ -7,7 +7,6 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-      // TODO: replace user
       user: "aerialdevteam85@gmail.com",
       pass: process.env.APP_PASSWORD,
     },
@@ -22,7 +21,7 @@ async function emailHandler(email, token) {
       text: "Password Reset", // plain text body
       html: `<p>You Code Is ${token}</p>`, // html body
     });
-    transporter.sendMail(info)
+    
     console.log("Message sent: %s", info.messageId);
   }
 

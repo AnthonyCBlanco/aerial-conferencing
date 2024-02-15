@@ -32,7 +32,6 @@ router.get('/forgetpassword', async (req, res) => {
     //   } else {}
         res.render('forgetpassword');
 
-    
 });
 
 
