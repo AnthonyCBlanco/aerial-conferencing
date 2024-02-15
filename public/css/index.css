@@ -302,5 +302,9 @@ main div {
     background-color: var(--accent-color);
   }
 
+#reset-form, #newpass-form{
+    display: none;
+}
+
 
 
