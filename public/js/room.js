@@ -16,6 +16,7 @@ let meetingId = "";
 let isMicOn = false;
 let isWebCamOn = false;
 
+
 // Function to initialize the meeting using VideoSDK
 const initializeMeeting = () => {
   // Configure VideoSDK with the provided token
@@ -24,7 +25,7 @@ const initializeMeeting = () => {
   // Initialize the meeting with specified parameters
   meeting = VideoSDK.initMeeting({
     meetingId: meetingId,
-    name: "test",
+    name: "",
     micEnabled: true,
     webcamEnabled: true,
   });
@@ -57,6 +58,7 @@ const initializeMeeting = () => {
 
   // Handle the event when a participant joins the meeting
   meeting.on("participant-joined", (participant) => {
+    console.log(participant)
     let videoElement = createVideoElement(
       participant.id,
       participant.displayName
@@ -105,7 +107,7 @@ const createVideoElement = (pId, name) => {
   videoFrameEl.appendChild(videoElement);
 
   let displayNameEl = document.createElement('div');
-  displayNameEl.innerHTML = `Name: ${name}`;
+  
 
   videoFrameEl.appendChild(displayNameEl);
   return videoFrameEl;
