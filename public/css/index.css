@@ -78,6 +78,29 @@ header {
     text-align: center;
 }
 
+#logout {
+    background-color: var(--accent-color); 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    outline: none; /
+  }
+  
+  #logout:hover,
+  #logout:focus {
+    background-color: darken(var(--accent-color), 10%); 
+    color: var(--primary-color); 
+    outline: none; 
+  }
+  
+
 /* Navigation Styles */
 nav {
     display: flex;
@@ -112,7 +135,7 @@ main {
     margin: 20px;
 }
 
-/* Aside Styles */
+/* Aside Styles*/
 aside {
     width: 20%;
     background-color: var(--accent-color);
@@ -142,6 +165,9 @@ main div {
     border-radius: 8px;
 }
 
+.friends-section {
+    background-color:var(--primary-color);
+}
 
 .feature-list {
     display: grid;
@@ -159,6 +185,48 @@ main div {
     color: var(--primary-color);
 }
 
+#side-bar {
+    max-width: 350px;
+}
+
+aside   {
+    max-width: 50%;
+}
+
+#friends-container {
+  background-color: var(--background-color); 
+  color: var(--text-color); 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin: 20px auto; 
+  max-width: 800px; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;  
+}
+
+#friends-container h2, #friends-container h3 {
+  color: var(--primary-color); /* Highlighting headings for visibility */
+  margin-bottom: 10px;
+}
+
+#friends-container a {
+  color: var(--accent-color);
+  text-decoration: none; 
+  transition: color 0.3s ease; 
+}
+
+
+#friends-container a:hover {
+  color: darken(var(--accent-color), 10%); 
+}
+
+#friends-container p {
+  line-height: 1.6; 
+}
+
+
 /* Image Styling */
 .feature-image {
     text-align: center;
@@ -171,16 +239,178 @@ main div {
     border-radius: 8px;
 }
 
-/* Footer Styles */
-footer {
+#join-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 300px;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    margin: auto;
+    max-width: 300px;
+  }
+  
+  #join-screen button {
     background-color: var(--primary-color);
     color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px; 
+    transition: background-color 0.3s ease;
+  }
+  
+  #join-screen button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  #join-screen input[type="text"] {
     padding: 10px;
-    text-align: center;
-    position: relative;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    width: calc(100% - 22px); 
+    font-size: 16px;
+  }
+  
+  /* Additional styles for grid-screen and its elements */
+  #grid-screen {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  #grid-screen h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  #grid-screen button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #grid-screen button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Styling for the video container */
+  #videoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-top: 20px;
-    width: 100%;
+  }
+
+  
+  
+
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap; 
+  }
+  
+  .footer-section {
+    margin: 10px;
+    flex: 1; 
+    min-width: 200px; 
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 15px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: var(--accent-color);
+  }
+  
+  .btn-primary {
+    background-color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--accent-color);
+  }
+
+#reset-form, #newpass-form{
+    display: none;
 }
 
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    nav ul li,
+    nav a {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    aside,
+    main div {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    footer {
+        text-align: center;
+    }
 
 
+@media (max-width: 480px) {
+    header,
+    nav,
+    main,
+    footer {
+        padding: 10px;
+    }
+
+}};

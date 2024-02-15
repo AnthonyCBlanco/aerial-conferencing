@@ -24,9 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(friend.meetingId);
     console.log(friend.meeting_id);
 
-    if (friend.meeting_id === null || friend.meeting_id === 'null') {
-      content += ' Offline';
-    } else  {
+    if (friend.meeting_id !== null || friend.meeting_id !== 'null') {
       
       content += ` Is in the meeting`;
       const joinButton = document.createElement('button');
@@ -44,6 +42,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.log(`Joining meeting with ID: ${friend.meeting_id}`);
       joinMeetingByFriendList(friend.meeting_id);
   });
+    } else {
+      content += ' Offline';
     }
   });  
   }
@@ -62,3 +62,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize and join the meeting
     initializeMeeting();
   };  
+
+ 

@@ -25,7 +25,7 @@
             <li><a href="/profile/">Profile</a></li>
         </ul>
         {{#if loggedIn}}
-        <button id="logout" style="background: none; border: none; padding: 0;">Logout</button>
+        <button id="logout">Logout</button>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
@@ -52,5 +52,27 @@
 
 </body>
 
+<footer>
+  <div class="footer-content">
+    <div class="footer-section about">
+      <h3>Aerial Inc.</h3>
+      <p>Aerial - Your trusted social network for seamless communication and collaboration.</p>
+    </div>
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-section contact-form">
+      <h3>Contact Us</h3>
+      <p>Have questions? Reach out to us through our contact form.</p>
+      <a href="#" class="btn-primary">Contact Form</a>
+    </div>
+  </div>
+</footer>
 </html>
 
