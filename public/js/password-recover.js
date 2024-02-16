@@ -62,8 +62,6 @@ async function newpasswordForm() {
                 "Content-Type": 'application/json'
             }
         })
-        const data = await response.json()
-        console.log(data)
         window.location.replace('/login')
 
     }catch(err){
