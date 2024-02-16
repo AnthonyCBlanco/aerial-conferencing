@@ -13,18 +13,11 @@ Aerial is a social network app that allows users to connect, collaborate, and sh
 
 ## Getting Started
 
-1. Clone the repository:
+1. Head over to our live site:
+   https://aerial-d42bb9d24b68.herokuapp.com/
+2. Create An account using your email and password
 
-   ```bash
-   git clone 
-
-2. # Assuming you have npm installed
-npm install
-
-3. The app will be accessible at http://localhost:3000 by default
-
-## Dependencies
-Node.js: Ensure you have Node.js installed on your machine.
+3. Create a new room and share the room code with your friends!!
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests to enhance the functionality or fix any bugs.
